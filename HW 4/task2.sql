@@ -8,6 +8,7 @@ INSERT INTO petPet VALUES
     ("Whistler", "Gwen", "bird", NULL, "1997-12-09", NULL),
     ("Slim", "Benny", "snake", "M", "1996-04-29", NULL),
     ('Puffball','Diane','hamster','F','1999-03-30',NULL);
+    ('Hammy','Diane','hamster','M',NULL,NULL);
 
 INSERT INTO petEvent VALUES
     ("Fluffy", "1995-05-15", "litter", "4 kittens, 3 female, 1 male"),
@@ -21,3 +22,17 @@ INSERT INTO petEvent VALUES
     ("Fang", "1998-08-28", "birthday", "Gave him a new chew toy"),
     ("Claws", "1998-03-17","birthday", "Gave him a new flea collar"),
     ("Whistler", "1998-12-09", "birthday", "First birthday");
+    ("Fluffy", "2020-10-15", "vet", "antibiotics");
+    ("Hammy", "2020-10-15", "vet", "antiobiotics");
+
+UPDATE petEvent SET 
+    remark = '5 kittens, 3 female, 2 male' WHERE petname = 'Fluffy', eventtype = 'litter';
+    petname = 'Claws' WHERE eventdate = '1997-08-03';
+
+UPDATE petPet SET 
+    death DATE = '2020-09-01' WHERE petname = 'Puffball';
+
+DELETE FROM petPet 
+    WHERE owner = 'Harold';
+
+
