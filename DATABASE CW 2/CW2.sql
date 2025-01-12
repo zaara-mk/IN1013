@@ -136,9 +136,11 @@ SELECT first_name, last_name FROM User WHERE email LIKE '%gmail%' ORDER BY date_
 select '2)' AS '';
 SELECT recipe_name FROM Recipe INNER JOIN Rating ON Recipe.recipe_ID = Rating.recipe_ID WHERE serving_size > 5 AND rating_score = 5;
 
-/* 3) How many users have created comments?*/
+/* 3) How many users have created comments and left ratings?*/
 select '3)' AS '';
-SELECT COUNT(DISTINCT user_ID) FROM Recipe;
+SELECT COUNT(DISTINCT Comment.user_ID) AS users_with_comment_and_rating
+FROM Comment
+INNER JOIN Rating ON Comment.user_ID = Rating.user_ID;
 
 /* 4) Find the first and last names of users who have created a comment and received less than a rating of 5*/
 select '4)' AS '';
@@ -172,14 +174,22 @@ SELECT first_name
 FROM User
 WHERE last_name = 'Islam';
 
-
-/* 7) */
+/* 7) Give an average rating for each recipe, but only show recipes with an average rating greater than or equal to 4. */
 select '7)' AS '';
+SELECT recipe_ID, AVG(rating_score) AS average_rating
+FROM Rating
+GROUP BY recipe_ID
+HAVING AVG(rating_score) >= 4;
 
 
-/* 8) */
+/* 8) List the first and last names of users who left a comment but didn't rate any recipes.*/
 select '8)' AS '';
-
+SELECT User.first_name, User.last_name
+FROM User
+LEFT JOIN Comment ON User.user_ID = Comment.user_ID
+LEFT JOIN Rating ON User.user_ID = Rating.user_ID
+WHERE Comment.user_ID IS NOT NULL
+AND Rating.user_ID IS NULL;
 
 
 /* SECTION 5 - DELETE ROWS - The queries must be explained in natural (English) language first, and then followed up by respective statements */
