@@ -151,7 +151,7 @@ INNER JOIN Rating
 ON Comment.user_ID = Rating.user_ID
 WHERE rating_score < 5;
 
-/* 5) List the emails and usernames of players who have used banana.*/
+/* 5) List the emails and usernames of players who have used 'banana' as an ingredient.*/
 select '5)' AS '';
 SELECT email, username 
 FROM User 
@@ -203,11 +203,11 @@ DELETE FROM Rating WHERE rating_timestamp < '10:00:00';
 
 /* SECTION 6 - DROP TABLES */
 
-DROP TABLE User;
-DROP TABLE Recipe;
-DROP TABLE Ingredient;
 DROP TABLE Comment;
 DROP TABLE Rating;
+DROP TABLE Ingredient;
+DROP TABLE Recipe;
+DROP TABLE User;
 
 
 SHOW TABLES;
