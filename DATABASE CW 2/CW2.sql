@@ -120,21 +120,17 @@ INSERT INTO Rating VALUES
 /* SECTION 3 - UPDATE STATEMENTS - The queries must be explained in natural (English) language first, and then followed up by respective statements */
 
 /* 1) Change Zaara Khan's current username to 'recipesbyzaara'. */
-
 UPDATE User SET username = 'recipesbyzaara' WHERE username = 'zaarakhan';
 
 /* 2) All recipes with serving size of 8 should change to have a serving size of 6. */
-
 UPDATE Recipe SET serving_size = 6 WHERE serving_size = 8;
 
 
 /* SECTION 4 - SELECT STATEMENTS - The queries must be explained in natural (English) language first, and then followed up by respective SELECTs*/
 
 
-/* 
-1)  
+/* 1)  List the full names of users who use gmail email addresses. */
 
-*/
 select '1)' AS '';
 
 
@@ -201,14 +197,17 @@ select '8)' AS '';
 /* 1) Selma Khatbane removes any comments made under recipes. */
 
 DELETE FROM Comment WHERE user_ID = 0000000010;
-
 /* 2) Any ratings made before 10am should be removed. */
-
 DELETE FROM Rating WHERE rating_timestamp < '10:00:00';
 
 
 /* SECTION 6 - DROP TABLES */
 
+DROP TABLE User;
+DROP TABLE Recipe;
+DROP TABLE Ingredient;
+DROP TABLE Comment;
+DROP TABLE Rating;
 
 
 SHOW TABLES;
