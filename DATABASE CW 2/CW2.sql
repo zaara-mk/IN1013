@@ -5,7 +5,49 @@ Student ID: 230001244
 
 /* SECTION 1 - CREATE TABLE STATEMENTS */
 
+CREATE TABLE User (
+    user_ID INTEGER(10) PRIMARY KEY,
+    email VARCHAR(50),
+    password VARCHAR(20),
+    first_name VARCHAR(20),
+    last_name VARCHAR(20),
+    username VARCHAR(20),
+    date_of_birth INTEGER(8));
 
+CREATE TABLE Recipe (
+    recipe_ID INTEGER(10),
+    name VARCHAR(50),
+    serving_size INTEGER(10)
+    instructions TEXT,
+    description TEXT,
+    user_ID INTEGER(10),
+    FOREIGN KEY (user_ID) REFERENCES User (user_ID));
+
+CREATE TABLE Ingredient (
+    ingredient_ID INTEGER(10) PRIMARY KEY,
+    name VARCHAR(50),
+    quantity DECIMAL(10,2),
+    unit VARCHAR(10),
+    recipe_ID INTEGER(10),
+    FOREIGN KEY (recipe_ID) REFERENCES Recipe (recipe_ID));
+
+CREATE TABLE Comment (
+    comment_ID INTEGER(10),
+    comment_description TEXT,
+    timestamp TIME,
+    recipe_ID INTEGER(10),
+    user_ID INTEGER(10),
+    FOREIGN KEY (recipe_ID) REFERENCES Recipe (recipe_ID),
+    FOREIGN KEY (user_ID) REFERENCES User (user_ID));
+
+CREATE TABLE Rating(
+    rating_ID INTEGER(10) PRIMARY KEY,
+    rating_score INTEGER (1),
+    timestamp TIME,
+    recipe_ID INTEGER(10),
+    user_ID INTEGER (10),
+    FOREIGN KEY (recipe_ID) REFERENCES Recipe (recipe_ID),
+    FOREIGN KEY (user_ID) REFERENCES User (user_ID));
 
 /* SECTION 2 - INSERT STATEMENTS */
 
