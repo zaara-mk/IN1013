@@ -140,44 +140,23 @@ SELECT recipe_name FROM Recipe INNER JOIN Rating ON Recipe.recipe_ID = Rating.re
 select '3)' AS '';
 SELECT COUNT(DISTINCT user_ID) FROM Recipe;
 
-
-
-/* 
-4)  
-
-*/
+/* 4) */
 select '4)' AS '';
 
 
-
-
-/* 
-5)  
-
-*/
+/* 5) */
 select '5)' AS '';
 
 
-
-/* 
-6)  
-
-*/
+/* 6) */
 select '6)' AS '';
 
 
-/* 
-7)  
-
-*/
+/* 7) */
 select '7)' AS '';
 
 
-
-/* 
-8)  
-
-*/
+/* 8) */
 select '8)' AS '';
 
 
