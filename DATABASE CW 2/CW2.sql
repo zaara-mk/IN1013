@@ -105,16 +105,16 @@ INSERT INTO Comment VALUES
     (300000010, "very yummy", '21:04:53', 1000000005, 0000000001);
 
 INSERT INTO Rating VALUES 
-    (4000000001, 5, '10:15:34', 1000000004, 0000000005),
-    (4000000002, 4, '19:20:54', 1000000004, 0000000007),
+    (4000000001, 5, '10:15:34', 1000000007, 0000000005),
+    (4000000002, 4, '19:20:54', 1000000001, 0000000007),
     (4000000003, 2, '18:45:52', 1000000008, 0000000008),
-    (4000000004, 5, '13:34:23', 1000000004, 0000000003),
-    (4000000005, 4, '05:56:53', 1000000004, 0000000005),
-    (4000000006, 3, '12:11:26', 1000000004, 0000000009),
+    (4000000004, 5, '13:34:23', 1000000002, 0000000003),
+    (4000000005, 4, '05:56:53', 1000000009, 0000000005),
+    (4000000006, 3, '12:11:26', 1000000007, 0000000009),
     (4000000007, 5, '08:16:17', 1000000004, 0000000011),
-    (4000000008, 5, '14:26:06', 1000000004, 0000000010),
-    (4000000009, 4, '21:26:24', 1000000004, 0000000001),
-    (4000000010, 5, '13:19:27', 1000000004, 0000000002);
+    (4000000008, 5, '14:26:06', 1000000010, 0000000010),
+    (4000000009, 4, '21:26:24', 1000000003, 0000000001),
+    (4000000010, 5, '13:19:27', 1000000006, 0000000002);
 
 
 /* SECTION 3 - UPDATE STATEMENTS - The queries must be explained in natural (English) language first, and then followed up by respective statements */
@@ -128,24 +128,17 @@ UPDATE Recipe SET serving_size = 6 WHERE serving_size = 8;
 
 /* SECTION 4 - SELECT STATEMENTS - The queries must be explained in natural (English) language first, and then followed up by respective SELECTs*/
 
-
 /* 1) List the first and last names of users who use gmail email addresses from youngest to oldest. */
 select '1)' AS '';
 SELECT first_name, last_name FROM User WHERE email LIKE '%gmail%' ORDER BY date_of_birth DESC;
-
 
 /* 2) List all the recipes that have a rating of 5 and a serving size greater than 5. */
 select '2)' AS '';
 SELECT recipe_name FROM Recipe INNER JOIN Rating ON Recipe.recipe_ID = Rating.recipe_ID WHERE serving_size > 5 AND rating_score = 5;
 
-
-
-
-/* 
-3)  
-
-*/
+/* 3) How many users have created comments?*/
 select '3)' AS '';
+SELECT COUNT(DISTINCT user_ID) FROM Recipe;
 
 
 
