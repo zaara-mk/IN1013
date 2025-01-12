@@ -140,16 +140,37 @@ SELECT recipe_name FROM Recipe INNER JOIN Rating ON Recipe.recipe_ID = Rating.re
 select '3)' AS '';
 SELECT COUNT(DISTINCT user_ID) FROM Recipe;
 
-/* 4) */
+/* 4) Find the first and last names of users who have created a comment and received less than a rating of 5*/
 select '4)' AS '';
+SELECT DISTINCT first_name, last_name 
+FROM User INNER JOIN Comment 
+ON User.user_ID = Comment.user_ID 
+INNER JOIN Rating 
+ON Comment.user_ID = Rating.user_ID
+WHERE rating_score < 5;
 
-
-/* 5) */
+/* 5) List the emails and usernames of players who have used banana.*/
 select '5)' AS '';
+SELECT email, username 
+FROM User 
+WHERE EXISTS (SELECT *
+  FROM Recipe 
+  INNER JOIN Ingredient 
+  ON Recipe.recipe_ID = Ingredient.recipe_ID
+  WHERE User.user_ID = Recipe.user_ID
+  AND ingredient_name = 'water');
 
-
-/* 6) */
+/* 6) Find the first names of users with the surname 'Islam' and users who have left a comment after 1pm.*/
 select '6)' AS '';
+SELECT first_name
+FROM User
+INNER JOIN Comment
+ON Comment.user_ID = User.user_ID
+WHERE comment_timestamp > '13:00:00'
+UNION 
+SELECT first_name
+FROM User
+WHERE last_name = 'Islam';
 
 
 /* 7) */
@@ -164,8 +185,8 @@ select '8)' AS '';
 /* SECTION 5 - DELETE ROWS - The queries must be explained in natural (English) language first, and then followed up by respective statements */
 
 /* 1) Selma Khatbane removes any comments made under recipes. */
-
 DELETE FROM Comment WHERE user_ID = 0000000010;
+
 /* 2) Any ratings made before 10am should be removed. */
 DELETE FROM Rating WHERE rating_timestamp < '10:00:00';
 
