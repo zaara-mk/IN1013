@@ -3,6 +3,7 @@ Student name: Zaara Khan
 Student ID: 230001244
 */
 
+
 /* SECTION 1 - CREATE TABLE STATEMENTS */
 
 CREATE TABLE User (
@@ -48,6 +49,7 @@ CREATE TABLE Rating(
     user_ID INTEGER (10),
     FOREIGN KEY (recipe_ID) REFERENCES Recipe (recipe_ID),
     FOREIGN KEY (user_ID) REFERENCES User (user_ID));
+
 
 /* SECTION 2 - INSERT STATEMENTS */
 
@@ -113,16 +115,18 @@ INSERT INTO Rating VALUES
     (4000000008, 5, '14:26:06', 1000000004, 0000000010),
     (4000000009, 4, '21:26:24', 1000000004, 0000000001),
     (4000000010, 5, '13:19:27', 1000000004, 0000000002);
-                     
+
+
 /* SECTION 3 - UPDATE STATEMENTS - The queries must be explained in natural (English) language first, and then followed up by respective statements */
 
-/* 1) Change Zaara Khan's current username to 'recipesbyzaara' */
+/* 1) Change Zaara Khan's current username to 'recipesbyzaara'. */
 
 UPDATE User SET username = 'recipesbyzaara' WHERE username = 'zaarakhan';
 
-/* 2) All recipes with serving size of 8 should change to have a serving size of 6 */
+/* 2) All recipes with serving size of 8 should change to have a serving size of 6. */
 
 UPDATE Recipe SET serving_size = 6 WHERE serving_size = 8;
+
 
 /* SECTION 4 - SELECT STATEMENTS - The queries must be explained in natural (English) language first, and then followed up by respective SELECTs*/
 
@@ -194,15 +198,13 @@ select '8)' AS '';
 
 /* SECTION 5 - DELETE ROWS - The queries must be explained in natural (English) language first, and then followed up by respective statements */
 
-/*
-1)
+/* 1) Selma Khatbane removes any comments made under recipes. */
 
-*/
+DELETE FROM Comment WHERE user_ID = 0000000010;
 
-/*
-2)
+/* 2) Any ratings made before 10am should be removed. */
 
-*/
+DELETE FROM Rating WHERE rating_timestamp < '10:00:00';
 
 
 /* SECTION 6 - DROP TABLES */
