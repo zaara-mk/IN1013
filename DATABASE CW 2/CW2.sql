@@ -62,7 +62,7 @@ INSERT INTO User VALUES
     (0000000006, "saimaakther@hotmail.com", "akther987", "Saima", "Akther", "saimacooks", 20060902),
     (0000000007, "hibasaib@gmail.com", "hiba123saib", "Hiba", "Saib", "foodbyhiba", 20041207),
     (0000000008, "zaynabcadow@yahoo.com", "zaanoow", "Zaynab", "Cadow", "zaynabeats", 20040923),
-    (0000000009, "ayahchakour@gmail.com", "ayah123", "Ayah", "Chakour", "ayaheats", 2005012),
+    (0000000009, "ayahchakour@gmail.com", "ayah123", "Ayah", "Chakour", "ayaheats", 20050123),
     (0000000010, "selmakhatbane@gmail.com", "selmak123", "Selma", "Khatbane", "selmarrr", 20050304),
     (0000000011, "luckybegum@hotmail.com", "lucky12lucky", "Lucky", "Begum", "luckyfoodie", 19830619);
 
@@ -129,17 +129,14 @@ UPDATE Recipe SET serving_size = 6 WHERE serving_size = 8;
 /* SECTION 4 - SELECT STATEMENTS - The queries must be explained in natural (English) language first, and then followed up by respective SELECTs*/
 
 
-/* 1)  List the full names of users who use gmail email addresses. */
-
+/* 1) List the first and last names of users who use gmail email addresses from youngest to oldest. */
 select '1)' AS '';
+SELECT first_name, last_name FROM User WHERE email LIKE '%gmail%' ORDER BY date_of_birth DESC;
 
 
-
-/* 
-2)  
-
-*/
+/* 2) List all the recipes that have a rating of 5 and a serving size greater than 5. */
 select '2)' AS '';
+SELECT recipe_name FROM Recipe INNER JOIN Rating ON Recipe.recipe_ID = Rating.recipe_ID WHERE serving_size > 5 AND rating_score = 5;
 
 
 
